@@ -48,7 +48,7 @@ function Register() {
                             type="file" id="profileImage" accept="image/*" />
                         {
                             ( selectedImage != defaultImage ) ?
-                                (<p className="text-sm font-bold">Foto de perfil</p>) : 
+                                (<p className="text-sm font-bold text-blue-800">Foto de perfil</p>) : 
                                 (<p className="text-sm font-bold text-red-800">Selecciona una imagen</p>)
                         }
                     </div>

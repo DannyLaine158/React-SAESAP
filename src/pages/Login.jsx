@@ -1,6 +1,8 @@
 import { useState } from "react";
 import AuthImage from '../components/auth/AuthImage';
-import LoginForm from '../components/auth/LoginForm';
+import AuthForm from '../components/auth/AuthForm';
+import AuthInput from "../components/auth/AuthInput";
+import AuthButton from "../components/auth/AuthButton";
 
 function Login() {
     let img = 'https://i.pinimg.com/564x/59/91/4d/59914df23dd44615d0d05e14eb9493cc.jpg';
@@ -15,13 +17,45 @@ function Login() {
         console.log(email, pass);
     }
 
+    const fields = [
+        {
+            component: AuthInput,
+            props: {
+                label: "Correo Electrónico",
+                paramType: "email",
+                paramId: "email",
+                paramOnChange: (e) => setEmail(e.target.value),
+                paramPlaceholder: "example@mail.com",
+                paramValue: email
+            }
+        },
+        {
+            component: AuthInput,
+            props: {
+                label: "Contraseña",
+                paramType: "password",
+                paramId: "password",
+                paramOnChange: (e) => setPass(e.target.value),
+                paramPlaceholder: "*******",
+                paramValue: pass
+            }
+        },
+        {
+            component: AuthButton,
+            props: {
+                nameAction: login,
+                label: "Iniciar Sesión",
+                labelLink: "Registrarse",
+                endpoint: '/register'
+            }
+        }
+    ]
+
     return (
         <>
             <div className="flex justify-center items-center h-screen drop-shadow-xl mt-1">
                 <AuthImage imageAuth={img} />
-                <LoginForm email={email} setEmail={setEmail}
-                    pass={pass} setPass={setPass} login={login}
-                />
+                <AuthForm fields={fields} />
             </div>
         </>
     );

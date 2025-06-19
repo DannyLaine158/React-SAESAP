@@ -1,8 +1,9 @@
 import { useState } from "react";
 import AuthInput from "../components/auth/AuthInput";
-import AuthButton from "../components/auth/AuthButton";
 import AuthImage from "../components/auth/AuthImage";
 import AuthSelectImage from "../components/auth/AuthSelectImage";
+import AuthForm from "../components/auth/AuthForm";
+import AuthButton from "../components/auth/AuthButton";
 
 function Register() {
     let img = 'https://v1.tailwindcss.com/img/card-left.jpg';
@@ -40,53 +41,64 @@ function Register() {
         console.log(name, email, pass);
     }
 
+    const fields = [
+        {
+            component: AuthSelectImage,
+            props: {
+                selectedImage,
+                handleImageChange,
+                handleImageClick,
+                defaultImage
+            }
+        },
+        {
+            component: AuthInput,
+            props: {
+                label: "Nombre",
+                paramType: "text",
+                paramId: "name",
+                paramOnChange: (e) => setName(e.target.value),
+                paramPlaceholder: "Ingresa tu nombre",
+                paramValue: name
+            }
+        },
+        {
+            component: AuthInput,
+            props: {
+                label: "Correo Electrónico",
+                paramType: "email",
+                paramId: "email",
+                paramOnChange: (e) => setEmail(e.target.value),
+                paramPlaceholder: "example@mail.com",
+                paramValue: email
+            }
+        },
+        {
+            component: AuthInput,
+            props: {
+                label: "Contraseña",
+                paramType: "password",
+                paramId: "password",
+                paramOnChange: (e) => setPass(e.target.value),
+                paramPlaceholder: "*******",
+                paramValue: pass
+            }
+        },
+        {
+            component: AuthButton,
+            props: {
+                nameAction: register,
+                label: "Registrarse",
+                labelLink: "Iniciar Sesión",
+                endpoint: '/'
+            }
+        }
+    ]
+
     return (
         <div className="flex justify-center items-center h-screen drop-shadow-xl mt-10">
             <AuthImage imageAuth={img} />
-
-            <div className="bg-gray-100 p-6 m-6 rounded-md">
-                <h2 className="text-3xl font-semibold mt-10">SocialNetwork</h2>
-                <h4 className="text-2xl font-semibold text-gray-400 mb-7">Crear Cuenta</h4>
-                <form className="mb-2">
-                    
-                    <AuthSelectImage selectedImage={selectedImage} 
-                        handleImageChange={handleImageChange}
-                        handleImageClick={handleImageClick}
-                        defaultImage={defaultImage}
-                    />
-
-                    <AuthInput label="Nombre:" 
-                        paramType="text" 
-                        paramId="name" 
-                        paramOnChange={e => setName(e.target.value)}
-                        paramPlaceholder="Ingresa tu nombre"
-                        paramValue={name}
-                    />
-
-                    <AuthInput label="Correo Electrónico:" 
-                        paramType="email" 
-                        paramId="email" 
-                        paramOnChange={e => setEmail(e.target.value)}
-                        paramPlaceholder="example@gmail.com"
-                        paramValue={email}
-                    />
-                    
-                    <AuthInput label="Contraseña:" 
-                        paramType="password" 
-                        paramId="password" 
-                        paramOnChange={e => setPass(e.target.value)}
-                        paramPlaceholder="*************"
-                        paramValue={pass}
-                    />
-
-                    <AuthButton
-                        nameAction={register}
-                        label={'Regístrate'}
-                        labelLink={'Inicia Sesión'}
-                        endpoint={'/'}
-                    />
-                </form>
-            </div>
+            <AuthForm fields={fields} />
         </div>
     );
 }

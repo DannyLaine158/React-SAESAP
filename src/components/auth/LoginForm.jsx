@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
-import LoginInput from './LoginInput';
+import AuthInput from './AuthInput';
+import AuthButton from './AuthButton';
 
 function LoginForm({ email, setEmail, pass, setPass, login }) {
     return (
@@ -8,7 +8,7 @@ function LoginForm({ email, setEmail, pass, setPass, login }) {
                 <h4 className="text-2xl font-semibold text-gray-400 mb-7"></h4>
                 <form className="mb-2">
 
-                    <LoginInput label="Correo Electrónico:" 
+                    <AuthInput label="Correo Electrónico:" 
                         paramType="email" 
                         paramId="email" 
                         paramOnChange={e => setEmail(e.target.value)}
@@ -16,7 +16,7 @@ function LoginForm({ email, setEmail, pass, setPass, login }) {
                         paramValue={email}
                     />
                     
-                    <LoginInput label="Contraseña:" 
+                    <AuthInput label="Contraseña:" 
                         paramType="password" 
                         paramId="password" 
                         paramOnChange={e => setPass(e.target.value)}
@@ -24,18 +24,12 @@ function LoginForm({ email, setEmail, pass, setPass, login }) {
                         paramValue={pass}
                     />
 
-                    <div className="text-right">
-                        <button
-                            onClick={login}
-                            type="submit" 
-                            className="cursor-pointer shadow-lg shadow-[#ace6ec] w-full bg-[#76bdc4] text-white py-2 rounded-md mt-6 shadow-lg shadow-indigo-800/40">
-                            Iniciar Sesión
-                        </button>
-                        <br />
-                        <Link to={'/register'} className="text-sm text-blue-500 hover:underline">
-                            Registrarse
-                        </Link>
-                    </div>
+                    <AuthButton
+                        nameAction={login}
+                        label={'Iniciar Sesión'}
+                        labelLink={'Registrarse'}
+                        endpoint={'/register'}
+                    />
                 </form>
         </div>
     );

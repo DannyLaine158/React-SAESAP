@@ -1,8 +1,9 @@
 import { useState } from "react";
-import LoginImage from '../components/auth/LoginImage';
+import AuthImage from '../components/auth/AuthImage';
 import LoginForm from '../components/auth/LoginForm';
 
 function Login() {
+    let img = 'https://i.pinimg.com/564x/59/91/4d/59914df23dd44615d0d05e14eb9493cc.jpg';
 
     // Inicializando nuestras variables de State
     const [ email, setEmail ] = useState("");
@@ -17,7 +18,7 @@ function Login() {
     return (
         <>
             <div className="flex justify-center items-center h-screen drop-shadow-xl mt-1">
-                <LoginImage />
+                <AuthImage imageAuth={img} />
                 <LoginForm email={email} setEmail={setEmail}
                     pass={pass} setPass={setPass} login={login}
                 />

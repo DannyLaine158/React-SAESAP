@@ -1,4 +1,4 @@
-function LoginInput({ label, paramType, paramId, 
+function AuthInput({ label, paramType, paramId, 
     paramOnChange, paramPlaceholder, paramValue }) {
 
     return (
@@ -20,4 +20,4 @@ function LoginInput({ label, paramType, paramId,
     );
 }
 
-export default LoginInput;
+export default AuthInput;

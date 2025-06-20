@@ -11,7 +11,7 @@ function Navbar({ logout }) {
                 </div>
 
                 <div className="w-full overflow-y-auto h-full text-md">
-                    <Link to={'/'}>
+                    <Link to={'/home'}>
                         <div className="flex items-center mt-1 hover:bg-zinc-100 rounded-lg pl-5 py-2">
                             <AiFillHome className="font-bold text-2xl" />
                             <p className="ml-5">Inicio</p>

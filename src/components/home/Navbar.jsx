@@ -2,7 +2,7 @@ import { AiFillCloseCircle, AiFillHome, AiOutlineMessage } from "react-icons/ai"
 import { BsPlusSquare, BsSearch } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
-function Navbar() {
+function Navbar({ logout }) {
     return (
         <div className="fixed h-screen border-r">
             <div className="hidden md:flex flex-col gap-y-2 h-full w-[250px] p-2">
@@ -39,7 +39,7 @@ function Navbar() {
                         </div>
                     </Link>
 
-                    <Link to={'/logout'}>
+                    <Link onClick={logout}>
                         <div className="flex items-center mt-1 hover:bg-zinc-100 rounded-lg pl-5 py-2">
                             <AiFillCloseCircle className="font-bold text-2xl" />
                             <p className="ml-5">Salir</p>

@@ -3,18 +3,21 @@ import AuthImage from '../components/auth/AuthImage';
 import AuthForm from '../components/auth/AuthForm';
 import AuthInput from "../components/auth/AuthInput";
 import AuthButton from "../components/auth/AuthButton";
+import { useAuth } from "../context/AuthContext";
 
 function Login() {
     let img = 'https://i.pinimg.com/564x/59/91/4d/59914df23dd44615d0d05e14eb9493cc.jpg';
+    const { login } = useAuth();
 
     // Inicializando nuestras variables de State
     const [ email, setEmail ] = useState("");
     const [ pass, setPass ] = useState("");
 
-    const login = (e) => {
+    const handleLogin = (e) => {
         // console.log(e);
         e.preventDefault();
         console.log(email, pass);
+        login(email, pass);
     }
 
     const fields = [
@@ -43,7 +46,7 @@ function Login() {
         {
             component: AuthButton,
             props: {
-                nameAction: login,
+                nameAction: handleLogin,
                 label: "Iniciar Sesión",
                 labelLink: "Registrarse",
                 endpoint: '/register'

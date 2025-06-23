@@ -6,24 +6,46 @@ const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
     const [ user, setUser ] = useState(null);
+    const [ users, setUsers ] = useState([]);
     const navigate = useNavigate();
 
     useEffect(() => {
-        const storedUser = localStorage.getItem("user");
-        if (storedUser) {
-            setUser(JSON.parse(storedUser));
-            navigate('/home');
-        }
+        const fetchUsers = async () => {
+            try {
+                const res = await fetch('https://randomuser.me/api/?results=10');
+                const data = await res.json();
+                setUsers(data.results);
+                console.log(data.results);
+
+                const storedUser = localStorage.getItem('user');
+                if (storedUser) {
+                    setUser(JSON.parse(storedUser));
+                    navigate('/home');
+                }
+            } catch (error) {
+                console.error("Error al obtener usuarios ", error);
+            }
+        };
+
+        fetchUsers();
     }, []);
 
     const login = (email, password) => {
-        if (email === 'admin@gmail.com' && password === '123456') {
-            const loggedUser = { name: "Admin", email };
-            setUser(loggedUser);
+        const matchedUser = users.find(
+            u => u.email === email && u.login.password === password
+        );
+
+        if (matchedUser) {
+            const loggedUser = {
+                name: `${matchedUser.name.first} ${matchedUser.name.last}`,
+                email: matchedUser.email,
+                picture: matchedUser.picture.large
+            }
+            setUser(matchedUser);
             localStorage.setItem("user", JSON.stringify(loggedUser));
             navigate('/home');
         } else {
-            alert("Credenciales incorrectas");
+            alert("Usuario o contraseña incorrectos");
         }
     }
 

@@ -1,3 +1,6 @@
+import Container from "../components/home/Container";
+import Navbar from "../components/home/Navbar";
+
 function Messages() {
     return (
         <div className="flex h-screen w-full">

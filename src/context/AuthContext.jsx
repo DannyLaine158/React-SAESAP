@@ -21,7 +21,7 @@ export const AuthProvider = ({ children }) => {
                 const storedUser = localStorage.getItem('user');
                 if (storedUser) {
                     setUser(JSON.parse(storedUser));
-                    navigate('/home');
+                    navigate('/app/home');
                 }
             } catch (error) {
                 console.error("Error al obtener usuarios ", error);

@@ -11,28 +11,28 @@ function Navbar({ logout }) {
                 </div>
 
                 <div className="w-full overflow-y-auto h-full text-md">
-                    <Link to={'/home'}>
+                    <Link to={'/app/home'}>
                         <div className="flex items-center mt-1 hover:bg-zinc-100 rounded-lg pl-5 py-2">
                             <AiFillHome className="font-bold text-2xl" />
                             <p className="ml-5">Inicio</p>
                         </div>
                     </Link>
 
-                    <Link to={'/search'}>
+                    <Link to={'/app/search'}>
                         <div className="flex items-center mt-1 hover:bg-zinc-100 rounded-lg pl-5 py-2">
                             <BsSearch className="font-bold text-2xl" />
                             <p className="ml-5">Buscar</p>
                         </div>
                     </Link>
 
-                    <Link to={'/inbox'}>
+                    <Link to={'/app/imbox'}>
                         <div className="flex items-center mt-1 hover:bg-zinc-100 rounded-lg pl-5 py-2">
                             <AiOutlineMessage className="font-bold text-2xl" />
                             <p className="ml-5">Mensajes</p>
                         </div>
                     </Link>
 
-                    <Link to={'/create'}>
+                    <Link to={'/app/create'}>
                         <div className="flex items-center mt-1 hover:bg-zinc-100 rounded-lg pl-5 py-2">
                             <BsPlusSquare className="font-bold text-2xl" />
                             <p className="ml-5">Crear</p>

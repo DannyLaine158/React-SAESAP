@@ -21,7 +21,7 @@ export const AuthProvider = ({ children }) => {
                 const storedUser = localStorage.getItem('user');
                 if (storedUser) {
                     setUser(JSON.parse(storedUser));
-                    navigate('/app/home');
+                    navigate('home');
                 }
             } catch (error) {
                 console.error("Error al obtener usuarios ", error);
@@ -48,7 +48,7 @@ export const AuthProvider = ({ children }) => {
             }
             setUser(matchedUser);
             localStorage.setItem("user", JSON.stringify(loggedUser));
-            window.location.href = '/app/home';
+            window.location.href = 'home';
         } else {
             alert("Usuario o contraseña incorrectos");
         }

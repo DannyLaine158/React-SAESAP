@@ -1,10 +1,10 @@
 export const BASE_PATH = import.meta.env.BASE_URL || '/';
 
 export const ROUTES = {
-    LOGIN: `/`,
-    REGISTER: `/register`,
-    APP: `/app`,
-    HOME: `/app/home`,
-    SEARCH: `/app/search`,
-    PROFILE: `/app/profile`
+    LOGIN: `${BASE_PATH}`,
+    REGISTER: `${BASE_PATH}register`,
+    APP: `${BASE_PATH}app`,
+    HOME: `${BASE_PATH}app/home`,
+    SEARCH: `${BASE_PATH}app/search`,
+    PROFILE: `${BASE_PATH}app/profile`
 };

@@ -48,7 +48,7 @@ export const AuthProvider = ({ children }) => {
             }
             setUser(matchedUser);
             localStorage.setItem("user", JSON.stringify(loggedUser));
-            window.location.href = 'home';
+            navigate('home');
         } else {
             alert("Usuario o contraseña incorrectos");
         }

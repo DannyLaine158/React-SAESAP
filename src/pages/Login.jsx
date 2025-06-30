@@ -12,6 +12,7 @@ function Login() {
     // Inicializando nuestras variables de State
     const [ email, setEmail ] = useState("");
     const [ pass, setPass ] = useState("");
+    const [ age, setAge ] = useState(0);
 
     const handleLogin = (e) => {
         // console.log(e);
@@ -41,6 +42,17 @@ function Login() {
                 paramOnChange: (e) => setPass(e.target.value),
                 paramPlaceholder: "*******",
                 paramValue: pass
+            }
+        },
+        {
+            component: AuthInput,
+            props: {
+                label: "Edad",
+                paramType: "number",
+                paramId: "edad",
+                paramOnChange: (e) => setAge(e.target.value),
+                paramPlaceholder: "",
+                paramValue: age
             }
         },
         {

@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { createContext, useContext, useState } from "react"
 import { useNavigate } from "react-router-dom";
+import { ROUTES } from "../routes/routes";
 
 const AuthContext = createContext();
 
@@ -21,7 +22,7 @@ export const AuthProvider = ({ children }) => {
                 const storedUser = localStorage.getItem('user');
                 if (storedUser) {
                     setUser(JSON.parse(storedUser));
-                    navigate('home');
+                    navigate(ROUTES.HOME);
                 }
             } catch (error) {
                 console.error("Error al obtener usuarios ", error);
@@ -48,7 +49,7 @@ export const AuthProvider = ({ children }) => {
             }
             setUser(matchedUser);
             localStorage.setItem("user", JSON.stringify(loggedUser));
-            navigate('home');
+            window.location.href = ROUTES.HOME;
         } else {
             alert("Usuario o contraseña incorrectos");
         }

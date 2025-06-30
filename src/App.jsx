@@ -7,12 +7,13 @@ import Messages from './pages/Messages';
 import Create from './pages/Create';
 import PrivateRoute from './routes/PrivateRoute';
 import AppLayout from './layouts/AppLayout';
+import { ROUTES } from './routes/routes';
 
 function App() {
   return (
     <Routes>
-      <Route path='/' element={<Login />}></Route>
-      <Route path='/register' element={<Register />}></Route>
+      <Route path={ROUTES.LOGIN} element={<Login />}></Route>
+      <Route path={ROUTES.REGISTER} element={<Register />}></Route>
       <Route path='/app' element={<PrivateRoute><AppLayout /></PrivateRoute>}>
         <Route path='home' element={<Home />} />
         <Route path='search' element={<Search />} />

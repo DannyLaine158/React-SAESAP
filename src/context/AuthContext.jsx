@@ -22,7 +22,7 @@ export const AuthProvider = ({ children }) => {
                 const storedUser = localStorage.getItem('user');
                 if (storedUser) {
                     setUser(JSON.parse(storedUser));
-                    window.location.href = 'React-SAESAP/app/home';
+                    navigate(ROUTES.HOME);
                 }
             } catch (error) {
                 console.error("Error al obtener usuarios ", error);
@@ -47,9 +47,9 @@ export const AuthProvider = ({ children }) => {
                 email: matchedUser.email,
                 picture: matchedUser.picture.large
             }
-            setUser(matchedUser);
+            setUser(loggedUser);
             localStorage.setItem("user", JSON.stringify(loggedUser));
-            window.location.href = ROUTES.HOME;
+            navigate(ROUTES.HOME);
         } else {
             alert("Usuario o contraseña incorrectos");
         }

@@ -22,7 +22,7 @@ export const AuthProvider = ({ children }) => {
                 const storedUser = localStorage.getItem('user');
                 if (storedUser) {
                     setUser(JSON.parse(storedUser));
-                    navigate(ROUTES.HOME);
+                    navigate('/app/home');
                 }
             } catch (error) {
                 console.error("Error al obtener usuarios ", error);
@@ -49,7 +49,7 @@ export const AuthProvider = ({ children }) => {
             }
             setUser(matchedUser);
             localStorage.setItem("user", JSON.stringify(loggedUser));
-            navigate(ROUTES.HOME);
+            navigate('/app/home');
         } else {
             alert("Usuario o contraseña incorrectos");
         }

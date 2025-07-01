@@ -49,7 +49,7 @@ export const AuthProvider = ({ children }) => {
             }
             setUser(matchedUser);
             localStorage.setItem("user", JSON.stringify(loggedUser));
-            window.location.href = ROUTES.HOME;
+            navigate(ROUTES.HOME);
         } else {
             alert("Usuario o contraseña incorrectos");
         }

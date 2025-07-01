@@ -12,7 +12,7 @@ import { ROUTES } from './routes/routes';
 function App() {
   return (
     <Routes>
-      <Route path='/login' element={<Login />}></Route>
+      <Route path='/' element={<Login />}></Route>
       <Route path='/register' element={<Register />}></Route>
       <Route path='/app' element={<PrivateRoute><AppLayout /></PrivateRoute>}>
         <Route path='home' element={<Home />} />
